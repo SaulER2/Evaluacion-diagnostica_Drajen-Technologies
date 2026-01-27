@@ -30,6 +30,8 @@ public class Menu {
                 case "3", "generar contraseña", "generar contrasena", "generarcontraseña", "generarcontrasena" -> GeneradorContraseñas.ejecutar(scanner);
 
                 case "4", "ahorcado" -> Ahorcado.ejecutar(scanner);
+
+                case "5", "fibonacci" -> Fibonacci.ejecutar(scanner);
             }
         }while(!opcion.equals("salir"));
     }
