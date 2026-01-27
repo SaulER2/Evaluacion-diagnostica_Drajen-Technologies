@@ -5,6 +5,7 @@
 package ejercicios.evaluacion.diagnostica;
 
 import ejercicios.evaluacion.diagnostica.ejercicios.*;
+import ejercicios.evaluacion.diagnostica.ejercicios.crud.*;
 import java.util.Scanner;
 
 /**
@@ -32,6 +33,12 @@ public class Menu {
                 case "4", "ahorcado" -> Ahorcado.ejecutar(scanner);
 
                 case "5", "fibonacci" -> Fibonacci.ejecutar(scanner);
+
+                case "6", "crud" -> ServicioUsuario.menuUsuario(scanner);
+
+                case "salir" -> System.out.println("Saliendo del programa. ¡Hasta luego!");
+
+                default -> System.out.println("Opción no válida. Por favor, intente de nuevo.");
             }
         }while(!opcion.equals("salir"));
     }
