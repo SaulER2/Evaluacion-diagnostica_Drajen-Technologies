@@ -26,6 +26,8 @@ public class Menu {
                 case "1", "palindromo", "palíndromo" -> Palindromo.ejecutar(scanner);
                 
                 case "2", "edad exacta", "edadexacta" -> EdadExacta.ejecutar(scanner);
+
+                case "3", "generar contraseña", "generar contrasena", "generarcontraseña", "generarcontrasena" -> GeneradorContraseñas.ejecutar(scanner);
             }
         }while(!opcion.equals("salir"));
     }

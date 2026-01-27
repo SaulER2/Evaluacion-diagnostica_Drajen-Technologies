@@ -37,11 +37,6 @@ public class EdadExacta {
             LocalDateTime fechaNacimiento = LocalDateTime.of(año, mes, dia, hora, 0);
             LocalDateTime fechaActual = LocalDateTime.now();
 
-            // int años = fechaActual.getYear() - fechaNacimiento.getYear();
-            // int meses = fechaActual.getMonthValue() - fechaNacimiento.getMonthValue();
-            // int dias = fechaActual.getDayOfMonth() - fechaNacimiento.getDayOfMonth();
-            // int horas = fechaActual.getHour() - fechaNacimiento.getHour();
-
             Period periodo = Period.between(fechaNacimiento.toLocalDate(), fechaActual.toLocalDate());
             Duration duracion = Duration.between(fechaNacimiento.toLocalTime(), fechaActual.toLocalTime());
 
