@@ -5,6 +5,7 @@
 
 package ejercicios.evaluacion.diagnostica;
 
+
 /**
  *
  * @author Saul Espinosa Rios
@@ -12,6 +13,8 @@ package ejercicios.evaluacion.diagnostica;
 public class EvaluacionDiagnostica {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        
+        Menu menu = new Menu();
+        menu.iniciar();
     }
 }
