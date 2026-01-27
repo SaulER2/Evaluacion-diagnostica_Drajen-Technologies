@@ -30,36 +30,44 @@ public class GeneradorContraseñas {
         do {
             System.out.print("Ingrese la longitud deseada para la contraseña (al menos 8): ");
             longitud = scanner.nextInt();
-            scanner.nextLine(); 
+            scanner.nextLine();
 
-            if(longitud < 8){
+            if (longitud < 8) {
                 System.out.println("La contraseña debe tener al menos 8 caracteres.");
                 continue;
             }
 
-            List<Character> contraseña = new ArrayList<>();
-
-            contraseña.add(mayusculas.charAt(random.nextInt(mayusculas.length())));
-            contraseña.add(simbolos.charAt(random.nextInt(simbolos.length())));
-            contraseña.add(numeros.charAt(random.nextInt(numeros.length())));
-
-            for (int i = 3; i < longitud; i++) {
-                contraseña.add(todosCaracteres.charAt(random.nextInt(todosCaracteres.length())));
-            }
-
-            Collections.shuffle(contraseña, random);
-
-            StringBuilder contraseñaFinal = new StringBuilder();
-            for (char c : contraseña) {
-                contraseñaFinal.append(c);
-            }
-
-            System.out.println("Contraseña generada: " + contraseñaFinal.toString());
+            System.out.println("Contraseña generada: "
+                    + generarCaracteres(longitud, mayusculas, numeros, simbolos, todosCaracteres, random));
 
             System.out.print("¿Desea generar otra contraseña? (s/n): ");
             continuar = scanner.nextLine().toLowerCase();
         } while (("s".equals(continuar)) || ("si".equals(continuar)) || ("sí".equals(continuar)));
 
     }
-    
+
+    private static String generarCaracteres(int longitud, String mayusculas, String numeros, String simbolos,
+            String todosCaracteres, SecureRandom random) {
+
+        List<Character> contraseña = new ArrayList<>();
+
+        contraseña.add(mayusculas.charAt(random.nextInt(mayusculas.length())));
+        contraseña.add(simbolos.charAt(random.nextInt(simbolos.length())));
+        contraseña.add(numeros.charAt(random.nextInt(numeros.length())));
+
+        for (int i = 3; i < longitud; i++) {
+            contraseña.add(todosCaracteres.charAt(random.nextInt(todosCaracteres.length())));
+        }
+        return mezclarLista(contraseña, random);
+    }
+
+    private static String mezclarLista(List<Character> contraseña, SecureRandom random) {
+        Collections.shuffle(contraseña, random);
+
+        StringBuilder contraseñaFinal = new StringBuilder();
+        for (char c : contraseña) {
+            contraseñaFinal.append(c);
+        }
+        return contraseñaFinal.toString();
+    }
 }
