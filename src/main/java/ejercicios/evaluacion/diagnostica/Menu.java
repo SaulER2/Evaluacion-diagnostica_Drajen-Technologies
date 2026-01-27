@@ -24,6 +24,8 @@ public class Menu {
             
             switch(opcion){
                 case "1", "palindromo", "palíndromo" -> Palindromo.ejecutar(scanner);
+                
+                case "2", "edad exacta", "edadexacta" -> EdadExacta.ejecutar(scanner);
             }
         }while(!opcion.equals("salir"));
     }

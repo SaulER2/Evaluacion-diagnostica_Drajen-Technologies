@@ -27,12 +27,9 @@ public class Palindromo {
             else{
                 System.out.println("No es palíndromo");
             }
-            System.out.println("""
-                               ¿Desea regresar?
-                               1.- Si
-                               2.- No""");
-            continuar = scanner.nextLine().replaceAll("\\s", "").toLowerCase();
-        }while(("2".equals(continuar)) || ("no".equals(continuar)));
+            System.out.println("¿Desea comprobar otra palabra? (s/n) ");
+            continuar = scanner.nextLine().toLowerCase();
+        } while(("s".equals(continuar)) || ("si".equals(continuar)) || ("sí".equals(continuar)));
         
     }
     
