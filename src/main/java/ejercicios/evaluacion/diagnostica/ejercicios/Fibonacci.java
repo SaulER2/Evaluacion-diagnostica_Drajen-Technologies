@@ -5,6 +5,8 @@
 package ejercicios.evaluacion.diagnostica.ejercicios;
 
 import ejercicios.evaluacion.diagnostica.EntradaContinuar;
+
+import java.math.BigInteger;
 import java.util.Scanner;
 
 /**
@@ -40,10 +42,9 @@ public class Fibonacci {
     }
 
     private static void Numerosfibonacci(int n) {
-        if (n <= 0)
-            return;
+        if (n <= 0) return;
 
-        int a = 0, b = 1;
+         BigInteger a = BigInteger.ZERO, b = BigInteger.ONE;
 
         System.out.print(a + " ");
         if (n == 1)
@@ -51,7 +52,7 @@ public class Fibonacci {
 
         System.out.print(b + " ");
         for (int i = 2; i < n; i++) {
-            int temp = a + b;
+            BigInteger temp = a.add(b);
             System.out.print(temp + " ");
             a = b;
             b = temp;

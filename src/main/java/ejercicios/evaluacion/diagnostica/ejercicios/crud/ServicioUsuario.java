@@ -68,7 +68,14 @@ public class ServicioUsuario {
         }
 
         System.out.print("Ingrese la contraseña del usuario: ");
-        String contraseña = scanner.nextLine();
+        String contraseña;
+        while (true) {
+            contraseña = scanner.nextLine().trim();
+            if (!contraseña.isBlank() && contraseña.length() >= 8) {
+                break;
+            }
+            System.out.print("La contraseña no puede estar vacía y debe tener al menos 8 caracteres. Ingrese la contraseña del usuario: ");
+        }
         
         Usuario usuario = new Usuario(nombre, edad, contraseña);
         usuarios.add(usuario);
@@ -128,9 +135,17 @@ public class ServicioUsuario {
             }
 
             System.out.print("Ingrese la nueva contraseña -Enter para mantener (" + usuario.getContraseña() + ")-: ");
-            String nuevaContraseña = scanner.nextLine();
-            if (!nuevaContraseña.isBlank()) {
-                usuario.setContraseña(nuevaContraseña);
+            String nuevaContraseña;
+            while (true) {
+                nuevaContraseña = scanner.nextLine().trim();
+                if (nuevaContraseña.isBlank()) {
+                    break;
+                }
+                if (nuevaContraseña.length() >= 8) {
+                    usuario.setContraseña(nuevaContraseña);
+                    break;
+                }
+                System.out.print("La contraseña debe tener al menos 8 caracteres. Ingrese la nueva contraseña -Enter para mantener (" + usuario.getContraseña() + ")-: ");
             }
 
             System.out.println("Usuario editado exitosamente.");
@@ -161,8 +176,6 @@ public class ServicioUsuario {
             listarUsuarios(scanner);
         } else {
             System.out.println("Usuario con ID " + id + " no encontrado.");
-            System.out.println("Presione Enter para continuar...");
-            scanner.nextLine();
         }
         System.out.println("Presione Enter para continuar...");
         scanner.nextLine();

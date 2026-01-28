@@ -29,16 +29,15 @@ public class GeneradorContraseñas {
         String continuar = "s";
 
         do {
-            System.out.print("Ingrese la longitud deseada para la contraseña (al menos 8): ");
             while (true) {
+                System.out.print("Ingrese la longitud deseada para la contraseña (al menos 8): ");
                 String input = scanner.nextLine();
                 try {
                     longitud = Integer.parseInt(input);
-                    if (longitud < 8) {
-                        System.out.println("La contraseña debe tener al menos 8 caracteres.");
-                        continue;
+                    if (longitud >= 8) {
+                        break;
                     }
-                    break;
+                    System.out.println("La contraseña debe de tener al menos 8 caracteres");
                 } catch (NumberFormatException e) {
                     System.out.print("Entrada inválida. Por favor, ingrese un número entero para la longitud: ");
                 }
