@@ -4,6 +4,8 @@
  */
 package ejercicios.evaluacion.diagnostica.ejercicios;
 
+import ejercicios.evaluacion.diagnostica.EntradaContinuar;
+
 import java.util.Scanner;
 
 /**
@@ -15,11 +17,16 @@ public class Palindromo {
     public static void ejecutar(Scanner scanner) {
         
         String palabra;
-        String continuar;
+        String continuar = "s";
         
         do{
             System.out.println("Ingrese una palabra: ");
             palabra = scanner.nextLine().replaceAll("\\s", "").toLowerCase();
+
+            if (palabra.isBlank()) {
+                System.out.println("La entrada no puede estar vacía. Intente de nuevo.");
+                continue;
+            }
         
             if (esPalindromo(palabra)){
                 System.out.println("Es palíndromo");
@@ -27,9 +34,9 @@ public class Palindromo {
             else{
                 System.out.println("No es palíndromo");
             }
-            System.out.println("¿Desea comprobar otra palabra? (s/n) ");
-            continuar = scanner.nextLine().toLowerCase();
-        } while(("s".equals(continuar)) || ("si".equals(continuar)) || ("sí".equals(continuar)));
+            
+            continuar = EntradaContinuar.continuar(scanner);
+        } while("s".equals(continuar));
         
     }
     

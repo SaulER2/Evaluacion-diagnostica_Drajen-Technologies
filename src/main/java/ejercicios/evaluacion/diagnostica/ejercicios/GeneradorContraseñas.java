@@ -4,6 +4,7 @@
  */
 package ejercicios.evaluacion.diagnostica.ejercicios;
 
+import ejercicios.evaluacion.diagnostica.EntradaContinuar;
 import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,20 +30,25 @@ public class GeneradorContraseñas {
 
         do {
             System.out.print("Ingrese la longitud deseada para la contraseña (al menos 8): ");
-            longitud = scanner.nextInt();
-            scanner.nextLine();
-
-            if (longitud < 8) {
-                System.out.println("La contraseña debe tener al menos 8 caracteres.");
-                continue;
+            while (true) {
+                String input = scanner.nextLine();
+                try {
+                    longitud = Integer.parseInt(input);
+                    if (longitud < 8) {
+                        System.out.println("La contraseña debe tener al menos 8 caracteres.");
+                        continue;
+                    }
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.print("Entrada inválida. Por favor, ingrese un número entero para la longitud: ");
+                }
             }
 
             System.out.println("Contraseña generada: "
                     + generarCaracteres(longitud, mayusculas, numeros, simbolos, todosCaracteres, random));
 
-            System.out.print("¿Desea generar otra contraseña? (s/n): ");
-            continuar = scanner.nextLine().toLowerCase();
-        } while (("s".equals(continuar)) || ("si".equals(continuar)) || ("sí".equals(continuar)));
+            continuar = EntradaContinuar.continuar(scanner);
+        } while ("s".equals(continuar));
 
     }
 

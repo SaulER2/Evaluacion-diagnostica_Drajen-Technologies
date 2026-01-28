@@ -4,6 +4,7 @@
  */
 package ejercicios.evaluacion.diagnostica.ejercicios;
 
+import ejercicios.evaluacion.diagnostica.EntradaContinuar;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.HashSet;
@@ -61,9 +62,9 @@ public class Ahorcado {
             } else {
                 System.out.println("Has perdido. La palabra era: " + palabraSecreta);
             }
-            System.out.print("¿Deseas jugar de nuevo? (s/n): ");
-            continuar = scanner.nextLine().toLowerCase();
-        } while (("s".equals(continuar)) || ("si".equals(continuar)) || ("sí".equals(continuar)));
+            
+            continuar = EntradaContinuar.continuar(scanner);
+        } while ("s".equals(continuar));
     }
 
     private static String seleccionarPalabra(String[] palabras) {
